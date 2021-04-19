@@ -7,4 +7,4 @@ project(DDS_example VERSION 0.9.0)
 execute_process(COMMAND git submodule update --init)
 add_subdirectory(external/cyclonedds)
 
-#add_subdirectory(simple)
+add_subdirectory(simple)
