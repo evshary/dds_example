@@ -8,3 +8,4 @@ execute_process(COMMAND git submodule update --init)
 add_subdirectory(external/cyclonedds)
 
 add_subdirectory(simple)
+add_subdirectory(status_example)
