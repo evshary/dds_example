@@ -5,7 +5,6 @@
 
 int main (int argc, char ** argv)
 {
-  dds_listener_t *listener;
   dds_entity_t participant;
   dds_entity_t topic;
   dds_entity_t writer;
@@ -34,16 +33,14 @@ int main (int argc, char ** argv)
     DDS_FATAL("dds_create_topic: %s\n", dds_strretcode(-topic));
 
   /* Create a Writer. */
-  listener = dds_create_listener ((void *) (uintptr_t) id_num);
   qos = dds_create_qos ();
   dds_qset_reliability (qos, DDS_RELIABILITY_RELIABLE, DDS_SECS (10));
   dds_qset_durability (qos, DDS_DURABILITY_TRANSIENT_LOCAL);
   dds_qset_liveliness (qos, DDS_LIVELINESS_AUTOMATIC, DDS_SECS (5));
-  writer = dds_create_writer (participant, topic, qos, listener);
+  writer = dds_create_writer (participant, topic, qos, NULL);
   if (writer < 0)
     DDS_FATAL("dds_create_writer: %s\n", dds_strretcode(-writer));
   dds_delete_qos(qos);
-  dds_delete_listener (listener);
 
   printf ("Run status publisher...\n");
   fflush (stdout);
