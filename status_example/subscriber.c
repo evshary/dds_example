@@ -109,7 +109,7 @@ int main (int argc, char ** argv)
       }
       if (!found) {
         dev_list[first_empty].deviceID = msg->userID;
-        dev_list[first_empty].publication_handle = infos->publication_handle;
+        dev_list[first_empty].publication_handle = infos[0].publication_handle;
       }
       fflush (stdout);
     }
