@@ -9,3 +9,4 @@ add_subdirectory(external/cyclonedds)
 
 add_subdirectory(simple_example)
 add_subdirectory(status_example)
+add_subdirectory(instance_example)

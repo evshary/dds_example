@@ -1,0 +1,11 @@
+module InstanceData
+{
+  struct Msg
+  {
+    long userID;
+    long counter;
+    string message;
+  };
+  #pragma keylist Msg userID
+};
+

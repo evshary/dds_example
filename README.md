@@ -2,8 +2,9 @@
 
 The repo provides some DDS example.
 
-simple_example: Simple example to publish and subscribe data.
-status_example: Use transient_local and liveliness to check the status of certain device.
+* simple_example: Simple example to publish and subscribe data.
+* status_example: Use transient_local and liveliness to check the status of certain device.
+* instance_example: Use instance to get data with certain key. You can refer to the test program `take_instance.c` in CycloneDDS.
 
 ## Build
 
@@ -25,4 +26,11 @@ cmake -Bbuild -H. && cmake --build build
 ```bash
 ./build/status_example/status_subscriber
 ./build/status_example/status_publisher
+```
+
+* Instance example
+
+```bash
+./build/instance_example/instance_subscriber
+./build/instance_example/instance_publisher
 ```
