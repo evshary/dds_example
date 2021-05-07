@@ -6,6 +6,8 @@ The repo provides some DDS example.
 * status_example: Use transient_local and liveliness to check the status of certain device.
 * instance_example: Use instance to get data with certain key. You can refer to the test program `take_instance.c` in CycloneDDS.
 
+The type of IDL in Cyclone DDS: https://github.com/eclipse-cyclonedds/cyclonedds/issues/350
+
 ## Build
 
 ```bash
