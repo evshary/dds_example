@@ -52,9 +52,14 @@ int main (int argc, char ** argv)
   InstanceData_Msg instance_msg;
   instance_msg.userID = 0;
   dds_instance_handle_t hdl;
-  while ( 0 != (hdl = dds_lookup_instance(reader, &instance_msg)) )
+  hdl = dds_lookup_instance(reader, &instance_msg);
+  while (1)
   {
     rc = dds_take_instance(reader, samples, infos, MAX_SAMPLES, MAX_SAMPLES, hdl);
+    // There is no publisher register the instance now.
+    if (rc == DDS_RETCODE_PRECONDITION_NOT_MET)
+        continue;
+    // Other error.
     if (rc < 0)
       DDS_FATAL("dds_read: %s\n", dds_strretcode(-rc));
 
