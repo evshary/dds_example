@@ -1,0 +1,10 @@
+module ListenerData
+{
+  struct Msg
+  {
+    long userID;
+    string message;
+  };
+  #pragma keylist Msg userID
+};
+
