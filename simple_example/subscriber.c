@@ -49,7 +49,7 @@ int main (int argc, char ** argv)
     while(true) {
         /* Do the actual read.
          * The return value contains the number of read samples. */
-        rc = dds_read(reader, samples, infos, MAX_SAMPLES, MAX_SAMPLES);
+        rc = dds_take(reader, samples, infos, MAX_SAMPLES, MAX_SAMPLES);
         if (rc < 0)
             DDS_FATAL("dds_read: %s\n", dds_strretcode(-rc));
   
@@ -60,11 +60,8 @@ int main (int argc, char ** argv)
             printf("=== [Subscriber] Received : ");
             printf("Message (%"PRId32", %s)\n", msg->userID, msg->message);
             fflush(stdout);
-            break;
-        } else {
-            /* Polling sleep. */
-            dds_sleepfor(DDS_MSECS (20));
         }
+        dds_sleepfor(DDS_MSECS(20));
     }
   
     /* Free the data location. */

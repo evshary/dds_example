@@ -45,18 +45,22 @@ int main(int argc, char ** argv)
         dds_sleepfor(DDS_MSECS(20));
     }
   
-    /* Create a message to write. */
-    msg.userID = 1;
-    msg.message = "Test";
+    int number = 0;
+    while (1) {
+        /* Create a message to write. */
+        msg.userID = number++;
+        msg.message = "Test";
   
-    printf("=== [Publisher]  Writing : ");
-    printf("Message (%"PRId32", %s)\n", msg.userID, msg.message);
-    fflush(stdout);
+        printf("=== [Publisher]  Writing : ");
+        printf("Message (%"PRId32", %s)\n", msg.userID, msg.message);
+        fflush(stdout);
   
-    rc = dds_write (writer, &msg);
-    if (rc != DDS_RETCODE_OK)
-        DDS_FATAL("dds_write: %s\n", dds_strretcode(-rc));
-  
+        rc = dds_write (writer, &msg);
+        if (rc != DDS_RETCODE_OK)
+            DDS_FATAL("dds_write: %s\n", dds_strretcode(-rc));
+        dds_sleepfor(DDS_SECS(1));
+    }
+
     /* Deleting the participant will delete all its children recursively as well. */
     rc = dds_delete(participant);
     if (rc != DDS_RETCODE_OK)
