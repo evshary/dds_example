@@ -1,0 +1,15 @@
+module std_msgs
+{
+  module msg
+  {
+    module dds_
+    {
+      struct String_
+      {
+        string data;
+      };
+    };
+#pragma keylist std_msgs::msg::dds_::String_
+  };
+};
+
